@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as Models from "models";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from "redux/store";
-import { setDiaries } from 'redux/slices/diarySlice';
-import dayjs from 'dayjs';
 import { styled } from '@mui/material/styles';
 
 import Container from '@mui/material/Container';
@@ -30,7 +28,7 @@ function PageWrapper() {
     }
 
     return (
-        <Background rating={selectedDiaryRating && selectedDiaryRating || 0}>
+        <Background rating={selectedDiaryRating ? selectedDiaryRating : 0}>
             <Container maxWidth="lg" className="Container">
                 <Stack spacing={2} justifyContent="space-between" sx={{ height: "100%" }}>
                     <Stack spacing={2}>

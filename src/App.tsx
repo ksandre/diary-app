@@ -14,25 +14,25 @@ const objects: Models.DiaryResponse[] = [
   },
   {
     uniqueId: "2",
-    date: dayjs().format(),
+    date: dayjs().add(-1, 'day').format(),
     description: "",
     rating: 0,
   },
   {
     uniqueId: "3",
-    date: dayjs().format(),
+    date: dayjs().add(-2, 'day').format(),
     description: "",
     rating: 0,
   },
   {
     uniqueId: "4",
-    date: dayjs().format(),
+    date: dayjs().add(-3, 'day').format(),
     description: "",
     rating: 0,
   },
   {
     uniqueId: "5",
-    date: dayjs().format(),
+    date: dayjs().add(-4, 'day').format(),
     description: "",
     rating: 0,
   }
@@ -42,7 +42,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setDiaries(objects))
+    if (localStorage.getItem('diaryDB') != null) {
+      dispatch(setDiaries(JSON.parse(localStorage.getItem('diaryDB') as string)));
+    } else {
+      dispatch(setDiaries(objects))
+    }
   }, [dispatch])
 
   return (

@@ -43,7 +43,7 @@ const BottomSingleItem: FC<BottomSingleItemProps> = ({ element, activeDiaryId, s
             <Stack spacing={2}>
                 <div>{renderDate(element.date)}</div>
                 <div>{element.description.substring(0, 20)}...</div>
-                <div>შეფასება: {element.rating}</div>
+                <div>შეფასება: {element.rating == 0 ? "უცნობი" : element.rating}</div>
             </Stack>
         </StyledCard>
     )

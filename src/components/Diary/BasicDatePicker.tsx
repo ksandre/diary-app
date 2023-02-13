@@ -1,11 +1,10 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "redux/store";
 import { setDate } from 'redux/slices/diarySlice';
 
 import { Dayjs } from 'dayjs';
-import localeKa from "dayjs/locale/ka"
 
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -40,6 +39,7 @@ const BasicDatePicker: FC<BasicDatePickerProps> = ({ activeDiaryId }) => {
                     newDate && handleDateChange(newDate.format());
                 }}
                 renderInput={(params) => <TextField {...params} />}
+                disableFuture={true}
             />
         </LocalizationProvider>
     );
