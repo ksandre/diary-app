@@ -32,15 +32,15 @@ const customIcons: {
         label: 'Very Dissatisfied',
     },
     2: {
-        icon: <SentimentDissatisfiedIcon color="error" fontSize='large' />,
+        icon: <SentimentDissatisfiedIcon sx={{ color: "#fd746c" }} fontSize='large' />,
         label: 'Dissatisfied',
     },
     3: {
-        icon: <SentimentSatisfiedIcon color="warning" fontSize='large' />,
+        icon: <SentimentSatisfiedIcon color="info" fontSize='large' />,
         label: 'Neutral',
     },
     4: {
-        icon: <SentimentSatisfiedAltIcon color="success" fontSize='large' />,
+        icon: <SentimentSatisfiedAltIcon sx={{ color: "#11998e" }} fontSize='large' />,
         label: 'Satisfied',
     },
     5: {
@@ -59,12 +59,13 @@ type RadioGroupRatingProps = {
 }
 
 
-const labels: { [index: string]: string } = {
-    1: 'Useless',
-    2: 'Poor',
-    3: 'Ok',
-    4: 'Good',
-    5: 'Excellent',
+const labels: { [index: number]: string } = {
+    0: 'გთხოვთ, შეაფასოთ 0-დან 5-მდე',
+    1: 'ძალიან ცუდი',
+    2: 'ცუდი',
+    3: 'ნორმალური',
+    4: 'კარგი',
+    5: 'შესანიშნავი',
 };
 
 const RadioGroupRating: FC<RadioGroupRatingProps> = ({ activeDiaryId }) => {
@@ -97,7 +98,7 @@ const RadioGroupRating: FC<RadioGroupRatingProps> = ({ activeDiaryId }) => {
                 }}
                 highlightSelectedOnly
             />
-            {selectedDiaryRating && <Box sx={{ ml: 2 }}>{labels[selectedDiaryRating]}</Box>}
+            {selectedDiaryRating != undefined && <Box sx={{ ml: 2 }}>{labels[selectedDiaryRating]}</Box>}
         </Stack>
     )
 }

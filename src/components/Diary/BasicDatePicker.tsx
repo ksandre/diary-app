@@ -5,6 +5,8 @@ import { RootState } from "redux/store";
 import { setDate } from 'redux/slices/diarySlice';
 
 import { Dayjs } from 'dayjs';
+import localeKa from "dayjs/locale/ka"
+
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -15,7 +17,6 @@ type BasicDatePickerProps = {
 }
 
 const BasicDatePicker: FC<BasicDatePickerProps> = ({ activeDiaryId }) => {
-    // const [value, setValue] = React.useState<Dayjs | null>(null);
     const dispatch = useDispatch();
     const diaries = useSelector((state: RootState) => state.diary.diaries);
 
@@ -31,9 +32,9 @@ const BasicDatePicker: FC<BasicDatePickerProps> = ({ activeDiaryId }) => {
     }
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={"ka"}>
             <DatePicker
-                label="Basic example"
+                label="თარიღი"
                 value={diaries.find(element => element.uniqueId == activeDiaryId)?.date}
                 onChange={(newDate: Dayjs | null) => {
                     newDate && handleDateChange(newDate.format());
